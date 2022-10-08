@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
+#    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/10/08 09:31:56 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/10/08 18:58:42 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,15 +27,25 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(SRC)
 	@$(CC) $(OBJ) -o $(NAME)
-	@echo "\033[0;35mPhilosophers successfully compiled!✨\033[0m"
+	@echo "\033[0;35m✨Philosophers successfully compiled!✨"
+	@echo "								"
+	@echo "         ,..........   .........., "
+	@echo "     ,..,'          '.'          ',.., "
+	@echo "    ,' ,'            :            ', ', "
+	@echo "   ,' ,'             :             ', ', "
+	@echo "  ,' ,'              :              ', ', "
+	@echo " ,' ,'............., : ,.............', ', "
+	@echo ",'  '............   '.'   ............'  ', "
+	@echo " '''''''''''''''''';''';'''''''''''''''''' "
+	@echo "                    ''' \033[0m"
 
 clean:
 	@$(RM) $(OBJ)
-	@echo "\033[0;34mPhilosophers successfully cleaned!✨\033[0m"
+	@echo "\033[0;34m✨Philosophers successfully cleaned!✨\033[0m"
 
 fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean art re
