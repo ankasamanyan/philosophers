@@ -6,7 +6,7 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/10/13 22:47:05 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/10/15 14:20:03 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,26 +33,16 @@ $(NAME): $(OBJ) $(SRC)
 	@$(CC) $(OBJ) -o $(NAME)
 	@echo "\033[0;35m✨Philosophers successfully compiled!✨"
 	@echo "	"
-	@echo "         ${RESET},..........   ..........,${PURPLE} "
-	@echo "     ,..${RESET},' ✨✨✨✨ '.' ✨✨✨✨ ',${PURPLE}.., "
-	@echo "    ,' ${RESET},'  ✨eat✨   :  ✨die✨   ',${PURPLE} ', "
-	@echo "   ,' ${RESET},'  ✨sleep✨  :   ✨die✨   ',${PURPLE} ', "
-	@echo "  ,' ${RESET},'  ✨think✨   :    ✨die✨   ',${PURPLE} ', "
-	@echo "  ' ${RESET},'  ✨think✨    :     ✨die✨   ',${PURPLE} ', "
-	@echo " ,' ${RESET},'............., : ,.............',${PURPLE} ', "
-	@echo ",'  ${RESET}'............   '.'   ............'${PURPLE}  ', "
-	@echo " '''''''''''''''''';''';''''''''''''''''''' "
-	@echo "                    '''  ${RESET}"
-
-art:
-	@echo ' (\ '
-	@echo ' \ \ '
-	@echo '  \ \     __________  '
-	@echo '  /  |   ()_________)'
-	@echo '  \  /    \ ~~~~~~~~ \'
-	@echo '    \       \ ~~~~~~   \'
-	@echo '    ==        \__________\'
-	@echo '   (__)       ()__________)'
+	@echo "      	           ${RESET},..........   ..........,${PURPLE} "
+	@echo "${RESET} (\ ${PURPLE}           ,..${RESET},' ✨✨✨✨ '.'  ✨✨✨  ',${PURPLE}.., "
+	@echo "${RESET} \ \ ${PURPLE}         ,' ${RESET},'  ✨eat ✨  :   ✨die✨  ',${PURPLE} ', "
+	@echo "${RESET}  \ \ ${PURPLE} 	     ,' ${RESET},'  ✨sleep✨  :    ✨die✨  ',${PURPLE} ', "
+	@echo "${RESET}  /  |${PURPLE} 	    ,' ${RESET},'  ✨think✨   :     ✨die✨  ',${PURPLE} ', "
+	@echo "${RESET}  \  /${PURPLE} 	   ,' ${RESET},'  ✨✨✨✨✨   :     ✨✨✨✨  ',${PURPLE} ', "
+	@echo "${RESET}    \  ${PURPLE}	  ,' ${RESET},'.............., : ,..............',${PURPLE} ', "
+	@echo "    ==   ,'  ${RESET}'.............   '.'   .............'${PURPLE}  ', "
+	@echo "   (__)   ''''''''''''''''''';''';''''''''''''''''''' "
+	@echo "                              '''  ${RESET}"
 
 clean:
 	@$(RM) $(OBJ)
