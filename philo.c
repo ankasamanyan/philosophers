@@ -11,9 +11,18 @@ void *halp2()
 	return 0;
 }
 
+long long	time_thingy(void)
+{
+	struct	timeval time;
+	int		time_thingy;
+
+	gettimeofday(&time, NULL);
+	time_thingy = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+	return (time_thingy);
+}
+
 int main(int argc, char const *argv[])
 {
-	
 	(void)argc;
 	(void)argv;
 	pthread_t philo1;

@@ -6,13 +6,13 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/10/15 14:20:03 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/10/24 16:58:35 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC = philo.c
+SRC = philo.c atoi.c 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
@@ -31,18 +31,18 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(SRC)
 	@$(CC) $(OBJ) -o $(NAME)
-	@echo "\033[0;35m✨Philosophers successfully compiled!✨"
+	@echo "\n\033[0;35m✨Philosophers successfully compiled!✨"
 	@echo "	"
-	@echo "      	           ${RESET},..........   ..........,${PURPLE} "
-	@echo "${RESET} (\ ${PURPLE}           ,..${RESET},' ✨✨✨✨ '.'  ✨✨✨  ',${PURPLE}.., "
-	@echo "${RESET} \ \ ${PURPLE}         ,' ${RESET},'  ✨eat ✨  :   ✨die✨  ',${PURPLE} ', "
-	@echo "${RESET}  \ \ ${PURPLE} 	     ,' ${RESET},'  ✨sleep✨  :    ✨die✨  ',${PURPLE} ', "
-	@echo "${RESET}  /  |${PURPLE} 	    ,' ${RESET},'  ✨think✨   :     ✨die✨  ',${PURPLE} ', "
-	@echo "${RESET}  \  /${PURPLE} 	   ,' ${RESET},'  ✨✨✨✨✨   :     ✨✨✨✨  ',${PURPLE} ', "
-	@echo "${RESET}    \  ${PURPLE}	  ,' ${RESET},'.............., : ,..............',${PURPLE} ', "
-	@echo "    ==   ,'  ${RESET}'.............   '.'   .............'${PURPLE}  ', "
-	@echo "   (__)   ''''''''''''''''''';''';''''''''''''''''''' "
-	@echo "                              '''  ${RESET}"
+	@echo "${RESET}  (\      	    ${RESET},..........   ..........,${PURPLE} "
+	@echo "${RESET}  \ \ ${PURPLE}          ,..${RESET},' ✨✨✨✨ '.'  ✨✨✨  ',${PURPLE}.., "
+	@echo "${RESET}   \ \ ${PURPLE}        ,' ${RESET},'  ✨eat ✨  :   ✨die✨  ',${PURPLE} ', "
+	@echo "${RESET}   /  | ${PURPLE}      ,' ${RESET},'  ✨sleep✨  :    ✨die✨  ',${PURPLE} ', "
+	@echo "${RESET}   \  /${PURPLE}      ,' ${RESET},'  ✨think✨   :     ✨die✨  ',${PURPLE} ', "
+	@echo "${RESET}     \ ${PURPLE}	    ,' ${RESET},'  ✨✨✨✨✨   :     ✨✨✨✨  ',${PURPLE} ', "
+	@echo "     == ${PURPLE}   ,' ${RESET},'.............., : ,..............',${PURPLE} ', "
+	@echo "    (__)  ,'  ${RESET}'.............   '.'   .............'${PURPLE}  ', "
+	@echo "           ''''''''''''''''''';''';''''''''''''''''''' "
+	@echo "                               '''  ${RESET}"
 
 clean:
 	@$(RM) $(OBJ)
@@ -50,6 +50,17 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@echo "	"
+	@echo "${RESET}  (\      	    ${RESET},..........   ..........,${PURPLE} "
+	@echo "${RESET}  \ \ ${PURPLE}          ,..${RESET},'          '.'          ',${PURPLE}.., "
+	@echo "${RESET}   \ \ ${PURPLE}        ,' ${RESET},'            :            ',${PURPLE} ', "
+	@echo "${RESET}   /  | ${PURPLE}      ,' ${RESET},'             :             ',${PURPLE} ', "
+	@echo "${RESET}   \  /${PURPLE}      ,' ${RESET},'              :              ',${PURPLE} ', "
+	@echo "${RESET}     \ ${PURPLE}	    ,' ${RESET},'               :               ',${PURPLE} ', "
+	@echo "     == ${PURPLE}   ,' ${RESET},'.............., : ,..............',${PURPLE} ', "
+	@echo "    (__)  ,'  ${RESET}'.............   '.'   .............'${PURPLE}  ', "
+	@echo "           ''''''''''''''''''';''';''''''''''''''''''' "
+	@echo "                               '''  ${RESET}"
 
 re: fclean all
 
