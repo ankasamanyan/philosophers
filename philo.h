@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/28 12:07:52 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/10/28 12:10:59 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int			ft_atoi(char *stringy);
 void		init(t_data *data);
 /* time function */
 long long	time_thingy(void);
+/* create threads */
+void	create_threads(t_data *data);
 
 
 #endif

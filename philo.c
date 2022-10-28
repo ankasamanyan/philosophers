@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 	data.argc = argc;
 	data.argv = argv;
 	init(&data);
-	ctreate_treads(&data);
+	create_threads(&data);
 
 	// printf("number_of_philosophers: %i\ntime_to_die: %i\ntime_to_eat: %i\ntime_to_sleep: %i\n",data.number_of_philosophers, data.time_to_die,data.time_to_eat, data.time_to_sleep );
 	// (void)argc;
