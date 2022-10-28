@@ -29,6 +29,7 @@ void	init(t_data *data)
 	data->time_to_sleep = ft_atoi(data->argv[4]);
 	if(data->argc == 6)
 		data->times_each_philo_must_eat = ft_atoi(data->argv[5]);
+	data->philo = malloc((data->number_of_philosophers) * sizeof(t_philo));
 }
 
 void	create_threads(t_data *data)
@@ -37,7 +38,11 @@ void	create_threads(t_data *data)
 
 	i = 0;
 	while(i < data->number_of_philosophers)
-		pthread_create(&data->philo[i].id, NULL, &halp, &data->philo[i]);
+	{
+		// printf("%p\n",&data->philo[i].thred);	
+		pthread_create(&data->philo[i].thred, NULL, &halp, &data->philo[i]);
+		i++;
+	}
 }
 
 int main(int argc, char *argv[])

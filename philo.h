@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/28 12:10:59 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/10/28 16:47:24 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
+#include <stdlib.h>
 
 typedef struct s_philo	t_philo;
 
@@ -35,7 +36,7 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-	pthread_t			id;
+	pthread_t			thred;
 	int					left_fork;
 	int					right_fork;
 	int					last_meal;
