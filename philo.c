@@ -4,12 +4,12 @@ void *halp()
 	printf("Halp ze philosophers\n");
 	return 0;
 }
-void *halp2()
-{
-	sleep(2);
-	printf("Halp ze second philosophers\n");
-	return 0;
-}
+// void *halp2()
+// {
+// 	sleep(2);
+// 	printf("Halp ze second philosophers\n");
+// 	return 0;
+// }
 
 long long	time_thingy(void)
 {
@@ -21,19 +21,50 @@ long long	time_thingy(void)
 	return (time_thingy);
 }
 
-int main(int argc, char const *argv[])
+void	init(t_data *data)
 {
-	(void)argc;
-	(void)argv;
-	pthread_t philo1;
-	pthread_t philo2;
+	data->number_of_philosophers = ft_atoi(data->argv[1]);
+	data->time_to_die = ft_atoi(data->argv[2]);
+	data->time_to_eat = ft_atoi(data->argv[3]);
+	data->time_to_sleep = ft_atoi(data->argv[4]);
+	if(data->argc == 6)
+		data->times_each_philo_must_eat = ft_atoi(data->argv[5]);
+}
 
-	pthread_create(&philo2, NULL, &halp2, NULL);
-	pthread_create(&philo1, NULL, &halp, NULL);
+void	create_threads(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while(i < data->number_of_philosophers)
+		pthread_create(&data->philo[i].id, NULL, &halp, &data->philo[i]);
+}
+
+int main(int argc, char *argv[])
+{
+	t_data	data;
+
+	data.argc = argc;
+	data.argv = argv;
+	init(&data);
+	ctreate_treads(&data);
+
+	// printf("number_of_philosophers: %i\ntime_to_die: %i\ntime_to_eat: %i\ntime_to_sleep: %i\n",data.number_of_philosophers, data.time_to_die,data.time_to_eat, data.time_to_sleep );
+	// (void)argc;
+	// (void)argv;
+	// pthread_t philo1;
+	// pthread_t philo2;
+	//routine();
+		//eat();
+		//sleep();
+		//think();
+		//die();
+	// pthread_create(&philo2, NULL, &halp2, NULL);
+	// pthread_create(&philo1, NULL, &halp, NULL);
 
 
-	pthread_join(philo1, NULL);
-	pthread_join(philo2, NULL);
+	// pthread_join(philo1, NULL);
+	// pthread_join(philo2, NULL);
 
 	return 0;
 }
