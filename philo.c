@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/28 22:27:44 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/10/29 19:15:55 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void *halp()
+void *halp(void *ptr)
 {
-	printf("Halp ze philosophers\n");
+	t_data	*data;
+
+	data = (t_data *)ptr;
+
+	printf("Philosopher %i :Halp ze philosophers\n", data->id);
+	data->id++;
 	return 0;
 }
 
@@ -30,6 +35,10 @@ long long	time_thingy(void)
 
 void	init(t_data *data)
 {
+	int	i;
+
+	i = 0;
+	data->id = 0;
 	data->number_of_philosophers = ft_atoi(data->argv[1]);
 	data->time_to_die = ft_atoi(data->argv[2]);
 	data->time_to_eat = ft_atoi(data->argv[3]);
@@ -37,6 +46,11 @@ void	init(t_data *data)
 	if(data->argc == 6)
 		data->times_each_philo_must_eat = ft_atoi(data->argv[5]);
 	data->philo = ft_calloc((data->number_of_philosophers), sizeof(t_philo));
+	// while(i < data->number_of_philosophers)
+	// {
+	// 	pthread_mutex_init(&data->forks[i], NULL);
+	// 	i++;
+	// }
 }
 
 void	create_threads(t_data *data)
@@ -46,7 +60,7 @@ void	create_threads(t_data *data)
 	i = 0;
 	while(i < data->number_of_philosophers)
 	{
-		pthread_create(&data->philo[i].thred, NULL, &halp, &data->philo[i]);
+		pthread_create(&data->philo[i].thred, NULL, (void *)&halp, &data->philo[i]);
 		i++;
 	}
 }

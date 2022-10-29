@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/28 22:14:49 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/10/29 19:12:50 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,24 @@ typedef struct s_philo	t_philo;
 
 typedef struct s_data
 {
-	int			argc;
-	char		**argv;
-	int			number_of_philosophers;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			times_each_philo_must_eat;
-	t_philo		*philo;
+	int					argc;
+	char				**argv;
+	int					id;
+	int					number_of_philosophers;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					times_each_philo_must_eat;
+	pthread_mutex_t		*forks;
+	t_philo				*philo;
 	
 }	t_data;
 
 typedef struct s_philo
 {
 	pthread_t			thred;
-	pthread_mutex_t		left_fork;
-	pthread_mutex_t		right_fork;
+	int					left_fork;
+	int					right_fork;
 	int					last_meal;
 	t_data				*data;
 	
