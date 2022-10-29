@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
+#    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/10/28 15:48:30 by akasaman         ###   ########.fr        #
+#    Updated: 2022/10/28 21:59:36 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC = philo.c atoi.c 
+SRC = philo.c utils.c 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc

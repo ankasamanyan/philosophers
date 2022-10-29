@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/28 16:47:24 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:14:49 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct s_philo	t_philo;
 
@@ -37,21 +38,24 @@ typedef struct s_data
 typedef struct s_philo
 {
 	pthread_t			thred;
-	int					left_fork;
-	int					right_fork;
+	pthread_mutex_t		left_fork;
+	pthread_mutex_t		right_fork;
 	int					last_meal;
 	t_data				*data;
 	
 }	t_philo;
 
-/* halp functions */
-int			ft_atoi(char *stringy);
 /* initializing values */
 void		init(t_data *data);
 /* time function */
 long long	time_thingy(void);
-/* create threads */
-void	create_threads(t_data *data);
+/* halp functions */
+int			ft_atoi(char *stringy);
+void		*ft_calloc(size_t count, size_t size);
+/* thread manipulations */
+void		create_threads(t_data *data);
+void		join_threads(t_data *data);
+
 
 
 #endif
