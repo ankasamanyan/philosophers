@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/30 13:20:19 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:23:41 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,14 @@ void *halp(void *ptr)
 
 void	eat(t_philo	*philo)
 {
-	printf("%sPhilosopher %i is eating%s\n", GREEN, philo->id, RESET);
+	pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
+	printf("%s%lld Philosopher %i has take a (left) fork (%i)%s\n", GREEN, timer(), philo->id, philo->left_fork, RESET);
+	pthread_mutex_lock(&philo->data->forks[philo->right_fork]);
+	printf("%s%lld Philosopher %i has take a (right) fork (%i)%s\n", PURPLE, philo->data->start_time, philo->id, philo->right_fork, RESET);
+	printf("%sPhilosopher %i is eating%s\n", PINK, philo->id, RESET);
 	usleep(philo->data->time_to_eat);
+	pthread_mutex_unlock(&philo->data->forks[philo->left_fork]);
+	pthread_mutex_unlock(&philo->data->forks[philo->right_fork]);
 }
 
 void	sleep_phill(t_philo *philo)
