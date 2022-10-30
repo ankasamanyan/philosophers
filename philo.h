@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/29 19:12:50 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/10/30 09:04:41 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ typedef struct s_data
 {
 	int					argc;
 	char				**argv;
-	int					id;
 	int					number_of_philosophers;
 	int					time_to_die;
 	int					time_to_eat;
 	int					time_to_sleep;
 	int					times_each_philo_must_eat;
+	long long			start_time;
 	pthread_mutex_t		*forks;
 	t_philo				*philo;
 	
@@ -40,9 +40,10 @@ typedef struct s_data
 typedef struct s_philo
 {
 	pthread_t			thred;
+	int					id;
 	int					left_fork;
 	int					right_fork;
-	int					last_meal;
+	long long			last_meal;
 	t_data				*data;
 	
 }	t_philo;
@@ -50,7 +51,7 @@ typedef struct s_philo
 /* initializing values */
 void		init(t_data *data);
 /* time function */
-long long	time_thingy(void);
+long long	timer(void);
 /* halp functions */
 int			ft_atoi(char *stringy);
 void		*ft_calloc(size_t count, size_t size);

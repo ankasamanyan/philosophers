@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/29 19:15:55 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/10/30 09:13:13 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,25 @@
 
 void *halp(void *ptr)
 {
-	t_data	*data;
+	t_philo	*philo;
 
-	data = (t_data *)ptr;
+	philo = (t_philo *)ptr;
 
-	printf("Philosopher %i :Halp ze philosophers\n", data->id);
-	data->id++;
+	printf("Philosopher %i: Halp ze philosophers\n His left fork: %i\n His right fork: %i\n\n", philo->id, philo->left_fork, philo->right_fork);	// philo->data->id++;
+	//eat();
+	//sleep();
+	//think();
+	//die();
+
 	return 0;
 }
 
-long long	time_thingy(void)
+void	eat(t_data	*data)
+{
+	
+}
+
+long long	timer(void)
 {
 	struct	timeval time;
 	int		time_thingy;
@@ -35,32 +44,38 @@ long long	time_thingy(void)
 
 void	init(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	data->id = 0;
+	data->start_time = timer();
 	data->number_of_philosophers = ft_atoi(data->argv[1]);
 	data->time_to_die = ft_atoi(data->argv[2]);
 	data->time_to_eat = ft_atoi(data->argv[3]);
 	data->time_to_sleep = ft_atoi(data->argv[4]);
 	if(data->argc == 6)
 		data->times_each_philo_must_eat = ft_atoi(data->argv[5]);
-	data->philo = ft_calloc((data->number_of_philosophers), sizeof(t_philo));
-	// while(i < data->number_of_philosophers)
-	// {
-	// 	pthread_mutex_init(&data->forks[i], NULL);
-	// 	i++;
-	// }
+	data->philo = ft_calloc(data->number_of_philosophers, sizeof(t_philo));
+	data->forks = ft_calloc(data->number_of_philosophers, sizeof(pthread_mutex_t));
 }
 
 void	create_threads(t_data *data)
 {
-	int i;
+	int	i;
 
-	i = 0;
-	while(i < data->number_of_philosophers)
+	i = 1;
+	while(i <= data->number_of_philosophers)
 	{
-		pthread_create(&data->philo[i].thred, NULL, (void *)&halp, &data->philo[i]);
+		data->philo[i].data = data;
+		data->philo[i].id = i;
+		data->philo[i].left_fork = i;
+		if (i != data->number_of_philosophers)
+			data->philo[i].right_fork = i + 1;
+		else
+			data->philo[i].right_fork = 1;
+		pthread_create(&data->philo[i].thred, NULL, &halp, &data->philo[i]);
+		i++;
+	}
+	i = 1;
+	while(i <= data->number_of_philosophers)
+	{
+		pthread_mutex_init(&(data->forks[i]), NULL);
 		i++;
 	}
 }
@@ -69,10 +84,16 @@ void	join_threads(t_data *data)
 {
 	int	i;
 
-	i = 0;
-	while(i < data->number_of_philosophers)
+	i = 1;
+	while(i <= data->number_of_philosophers)
 	{
 		pthread_join(data->philo[i].thred, NULL);
+		i++;
+	}
+	i = 1;
+	while(i <= data->number_of_philosophers)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
 }
