@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/30 09:13:13 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/10/30 13:20:19 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,30 @@ void *halp(void *ptr)
 
 	philo = (t_philo *)ptr;
 
-	printf("Philosopher %i: Halp ze philosophers\n His left fork: %i\n His right fork: %i\n\n", philo->id, philo->left_fork, philo->right_fork);	// philo->data->id++;
-	//eat();
-	//sleep();
-	//think();
+	// printf("%sPhilosopher %i:%s Halp ze philosophers\n His left fork: %i\n His right fork: %i\n\n", CYAN, philo->id, RESET, philo->left_fork, philo->right_fork);	// philo->data->id++;
+	eat(philo);
+	sleep_phill(philo);
+	think(philo);
 	//die();
 
 	return 0;
 }
 
-void	eat(t_data	*data)
+void	eat(t_philo	*philo)
 {
+	printf("%sPhilosopher %i is eating%s\n", GREEN, philo->id, RESET);
+	usleep(philo->data->time_to_eat);
+}
+
+void	sleep_phill(t_philo *philo)
+{
+	printf("%sPhilosopher %i is sleeping%s\n", YELLOW, philo->id, RESET);
+	usleep(philo->data->time_to_sleep);
+}
+
+void	think(t_philo *philo)
+{
+	printf("%sPhilosopher %i is thinking %s\n", SKY, philo->id, RESET);
 	
 }
 
@@ -112,14 +125,5 @@ int main(int argc, char *argv[])
 	join_threads(&data);
 
 	// printf("number_of_philosophers: %i\ntime_to_die: %i\ntime_to_eat: %i\ntime_to_sleep: %i\n",data.number_of_philosophers, data.time_to_die,data.time_to_eat, data.time_to_sleep );
-	// (void)argc;
-	// (void)argv;
-	// pthread_t philo1;
-	// pthread_t philo2;
-	//routine();
-		//eat();
-		//sleep();
-		//think();
-		//die();
 	return 0;
 }

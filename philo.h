@@ -3,22 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/30 09:04:41 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/10/30 13:12:29 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <sys/time.h>
-#include <stdlib.h>
-#include <string.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <pthread.h>
+# include <sys/time.h>
+# include <stdlib.h>
+# include <string.h>
+
+# define RESET	"\033[0m"
+# define BLACK	"\033[0;30m"
+# define RED	"\033[0;31m"
+# define GREEN	"\033[0;32m"
+# define YELLOW	"\033[0;33m"
+# define PURPLE	"\033[0;34m"
+# define PINK	"\033[0;35m"
+# define SKY	"\033[0;36m"
+
+# define ON_RED "\033[41m"
+
+
 
 typedef struct s_philo	t_philo;
 
@@ -33,9 +46,8 @@ typedef struct s_data
 	int					times_each_philo_must_eat;
 	long long			start_time;
 	pthread_mutex_t		*forks;
-	t_philo				*philo;
-	
-}	t_data;
+	t_philo				*philo;	
+}				t_data;
 
 typedef struct s_philo
 {
@@ -45,8 +57,7 @@ typedef struct s_philo
 	int					right_fork;
 	long long			last_meal;
 	t_data				*data;
-	
-}	t_philo;
+}				t_philo;
 
 /* initializing values */
 void		init(t_data *data);
@@ -58,7 +69,9 @@ void		*ft_calloc(size_t count, size_t size);
 /* thread manipulations */
 void		create_threads(t_data *data);
 void		join_threads(t_data *data);
-
-
+/* routine */
+void		eat(t_philo	*philo);
+void		sleep_phill(t_philo *philo);
+void	think(t_philo *philo);
 
 #endif
