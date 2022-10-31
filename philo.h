@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/30 13:12:29 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:04:21 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void		join_threads(t_data *data);
 /* routine */
 void		eat(t_philo	*philo);
 void		sleep_phill(t_philo *philo);
-void	think(t_philo *philo);
+void		think(t_philo *philo);
 
 #endif
