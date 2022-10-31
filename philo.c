@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/31 17:05:34 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/10/31 19:32:10 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void *halp(void *ptr)
 		eat(philo);
 		sleep_phill(philo);
 		think(philo);
-		usleep(100);
 	}
 	//die();
 
@@ -34,26 +33,33 @@ void *halp(void *ptr)
 
 void	eat(t_philo	*philo)
 {
+	long long	time;
+
+	time = timer();
 	pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
 	printf("%s%lld Philosopher %i has take a (left) fork (%i)%s\n", GREEN, timer() - philo->data->start_time, philo->id, philo->left_fork, RESET);
 	pthread_mutex_lock(&philo->data->forks[philo->right_fork]);
 	printf("%s%lld Philosopher %i has take a (right) fork (%i)%s\n", PURPLE, timer() - philo->data->start_time, philo->id, philo->right_fork, RESET);
-	printf("%s%lldPhilosopher %i is eating%s\n", PINK, timer() - philo->data->start_time, philo->id, RESET);
-	usleep(philo->data->time_to_eat);
+	printf("%s%lld Philosopher %i is eating%s\n", PINK, timer() - philo->data->start_time, philo->id, RESET);
+	while (time + philo->data->time_to_eat > timer())
+		usleep(100);
 	pthread_mutex_unlock(&philo->data->forks[philo->left_fork]);
 	pthread_mutex_unlock(&philo->data->forks[philo->right_fork]);
 }
 
 void	sleep_phill(t_philo *philo)
 {
-	printf("%s%lldPhilosopher %i is sleeping%s\n",  YELLOW, timer() - philo->data->start_time, philo->id, RESET);
-	usleep(philo->data->time_to_sleep);
+	long long	time;
+
+	time = timer();
+	printf("%s%lld Philosopher %i is sleeping%s\n",  YELLOW, timer() - philo->data->start_time, philo->id, RESET);
+	while (time + philo->data->time_to_sleep > timer())
+		usleep(100);
 }
 
 void	think(t_philo *philo)
 {
-	printf("%s%lldPhilosopher %i is thinking %s\n", SKY, timer() - philo->data->start_time, philo->id, RESET);
-	
+	printf("%s%lld Philosopher %i is thinking %s\n", SKY, timer() - philo->data->start_time, philo->id, RESET);
 }
 
 long long	timer(void)
