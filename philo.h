@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/10/31 18:21:15 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:18:43 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define RESET	"\033[0m"
-# define BLACK	"\033[0;30m"
-# define RED	"\033[0;31m"
-# define GREEN	"\033[0;32m"
-# define YELLOW	"\033[0;33m"
-# define PURPLE	"\033[0;34m"
-# define PINK	"\033[0;35m"
-# define SKY	"\033[0;36m"
+# define RESET		"\033[0m"
+# define BLACK		"\033[0;30m"
+# define RED		"\033[0;31m"
+# define GREEN		"\033[0;32m"
+# define YELLOW		"\033[0;33m"
+# define PURPLE		"\033[0;34m"
+# define PINK		"\033[0;35m"
+# define SKY		"\033[0;36m"
 
-# define ON_RED "\033[41m"
+# define ON_RED 	"\033[41m"
+# define ON_PURPLE	"\033[44m"
+# define ON_PINK	"\033[45m"
 
 
 
@@ -60,14 +62,14 @@ typedef struct s_philo
 }				t_philo;
 
 /* initializing values */
-void		init(t_data *data);
+void		set_the_table(t_data *data);
 /* time function */
 long long	timer(void);
 /* halp functions */
 int			ft_atoi(char *stringy);
 void		*ft_calloc(size_t count, size_t size);
 /* thread manipulations */
-void		create_threads(t_data *data);
+void		invite_philosophers(t_data *data);
 void		join_threads(t_data *data);
 /* routine */
 void		eat(t_philo	*philo);
