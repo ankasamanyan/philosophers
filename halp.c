@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:57 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 03:25:25 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 05:30:09 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ void	*ft_calloc(size_t count, size_t size)
 	if (!ptr_thingy)
 		return (NULL);
 	return (memset (ptr_thingy, 0, counter_thingy));
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

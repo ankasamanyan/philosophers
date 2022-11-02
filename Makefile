@@ -6,13 +6,13 @@
 #    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/10/30 15:07:28 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/11/02 03:43:34 by ankasamanya      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC = philo.c utils.c 
+SRC = philo.c halp.c routine.c set_dinner.c
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
@@ -27,7 +27,9 @@ all: $(NAME)
 
 %.o: %.c
 	@$(CC) $(FLAGS) -c $< -o $@
-	@echo "\033[0;35m•\033[0m\c"
+	@echo "\033[0;35m••••\033[0m\c"
+	@echo "\033[0;35m••••\033[0m\c"
+	@echo "\033[0;35m••••\033[0m\c"
 
 $(NAME): $(OBJ) $(SRC)
 		@$(CC) $(OBJ) -o $(NAME) -fsanitize=address -g

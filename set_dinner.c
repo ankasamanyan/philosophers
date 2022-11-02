@@ -6,11 +6,55 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 03:22:38 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 05:38:01 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	input_check(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (argc < 5 || argc > 6)
+	{
+		write(2, "\033[44mWrong number of arguments!\033[0m\n", 36);
+		exit(0);
+	}
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j] &&
+			(ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < 0))
+		{
+			if (!ft_isdigit(argv[i][j]))
+			{
+				write(2, "\033[44mInvalid input!\033[0m\n", 36);
+				exit(0);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+	//check if it's a number?
+
+void	no_one_showed_up(t_philo *philo)
+{
+	if (philo->data->number_of_philosophers == 1)
+	{
+		pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
+		printf("%s%lld Philosopher %i has taken a fork%s\n", YELLOW,
+			timer() - philo->data->start_time, philo->id, RESET);
+		usleep(philo->data->time_to_die);
+		printf("%s%lld Philosopher %i died. RIP%s\n", ON_PINK,
+			timer() - philo->data->start_time, philo->id, RESET);
+		put_down_forks(philo);
+		exit (0);
+	}
+}
 
 void	set_the_table(t_data *data, int argc, char **argv)
 {
@@ -38,9 +82,9 @@ void	invite_the_philosophers(t_data *data)
 	{
 		data->philo[i].data = data;
 		data->philo[i].meals = 0;
-		data->philo[i].last_meal = data->start_time;
 		data->philo[i].id = i + 1;
 		data->philo[i].left_fork = data->philo[i].id;
+		data->philo[i].last_meal = data->start_time;
 		if (i != data->number_of_philosophers)
 			data->philo[i].right_fork = data->philo[i].id + 1;
 		else
