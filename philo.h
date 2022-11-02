@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 05:30:43 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 15:45:35 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_philo
 /* input check */
 void		input_check(int argc, char **argv);
 /* initializing values */
-void		no_one_showed_up(t_philo *philo);
+int			no_one_showed_up(t_philo *philo);
 void		set_the_table(t_data *data, int argc, char **argv);
 /* halp functions */
 long long	timer(void);

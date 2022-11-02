@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_dinner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 05:38:01 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 17:00:23 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ void	input_check(int argc, char **argv)
 }
 	//check if it's a number?
 
-void	no_one_showed_up(t_philo *philo)
+int	no_one_showed_up(t_philo *philo)
 {
+	
+	// pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
 	if (philo->data->number_of_philosophers == 1)
 	{
 		pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
@@ -52,8 +54,9 @@ void	no_one_showed_up(t_philo *philo)
 		printf("%s%lld Philosopher %i died. RIP%s\n", ON_PINK,
 			timer() - philo->data->start_time, philo->id, RESET);
 		put_down_forks(philo);
-		exit (0);
+		return (1);
 	}
+	return (0);
 }
 
 void	set_the_table(t_data *data, int argc, char **argv)
@@ -92,6 +95,7 @@ void	invite_the_philosophers(t_data *data)
 		pthread_create(&data->philo[i].thred, NULL, &halp, &data->philo[i]);
 		i++;
 	}
+	printf("HELLO I AM PARENT\n");
 	i = 0;
 	while (i < data->number_of_philosophers)
 		pthread_mutex_init(&data->forks[i++], NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:29:24 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 04:24:37 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 16:24:16 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	time_to_think(t_philo *philo)
 		return (1);
 	printf("%s%lld Philosopher %i is thinking%s\n", SKY,
 		timer() - philo->data->start_time, philo->id, RESET);
+	if (code_blue(philo))
+		return (1);
 	return (0);
 }
 
