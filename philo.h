@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 03:10:24 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 03:29:04 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define life_is_meaningless_and_we_all_gonna_die 1
+# define LIFE_IS_MEANUNGLESS_AND_WE_ALL_GONNA_DIE 1
 
 # define RESET		"\033[0m"
 # define BLACK		"\033[0;30m"
@@ -34,8 +34,6 @@
 # define ON_RED 	"\033[41m"
 # define ON_PURPLE	"\033[44m"
 # define ON_PINK	"\033[45m"
-
-
 
 typedef struct s_philo	t_philo;
 
@@ -81,6 +79,5 @@ void		*halp(void *ptr);
 int			time_to_eat(t_philo	*philo);
 int			time_to_sleep(t_philo *philo);
 int			time_to_think(t_philo *philo);
-
 
 #endif

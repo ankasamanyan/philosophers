@@ -6,7 +6,7 @@
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:57 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 03:11:15 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 03:25:25 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long long	timer(void)
 {
-	struct	timeval time;
-	int		time_thingy;
+	struct timeval	time;
+	int				time_thingy;
 
 	gettimeofday(&time, NULL);
 	time_thingy = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
@@ -27,17 +27,17 @@ void	get_rid_of_the_bodies(t_data *data)
 	int	i;
 
 	i = 0;
-	while(i < data->number_of_philosophers)
+	while (i < data->number_of_philosophers)
 		pthread_join(data->philo[i++].thred, NULL);
 	i = 0;
-	while(i < data->number_of_philosophers)
+	while (i < data->number_of_philosophers)
 		pthread_mutex_destroy(&data->forks[i++]);
 	pthread_mutex_destroy(&data->pulse_check);
 	free(data->philo);
 	free(data->forks);
 }
 
-int		ft_atoi(char *stringy)
+int	ft_atoi(char *stringy)
 {
 	int		number;
 	int		sign;
@@ -52,7 +52,7 @@ int		ft_atoi(char *stringy)
 		stringy++;
 	while (*stringy >= '0' && *stringy <= '9')
 		number = number * 10 + (*stringy++ - '0');
-	return(sign * number);
+	return (sign * number);
 }
 
 void	*ft_calloc(size_t count, size_t size)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prepare_for_dinner.c                               :+:      :+:    :+:   */
+/*   set_dinner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 02:44:18 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/02 03:22:38 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	set_the_table(t_data *data, int argc, char **argv)
 		data->times_philo_must_eat = ft_atoi(argv[5]);
 	else
 		data->times_philo_must_eat = -1;
-		
 	data->philo = ft_calloc(data->number_of_philosophers, sizeof(t_philo));
-	data->forks = ft_calloc(data->number_of_philosophers, sizeof(pthread_mutex_t));
+	data->forks = ft_calloc(data->number_of_philosophers,
+			sizeof(pthread_mutex_t));
 }
 
 void	invite_the_philosophers(t_data *data)
@@ -34,7 +34,7 @@ void	invite_the_philosophers(t_data *data)
 	int	i;
 
 	i = 0;
-	while(i < data->number_of_philosophers)
+	while (i < data->number_of_philosophers)
 	{
 		data->philo[i].data = data;
 		data->philo[i].meals = 0;
@@ -49,7 +49,7 @@ void	invite_the_philosophers(t_data *data)
 		i++;
 	}
 	i = 0;
-	while(i < data->number_of_philosophers)
+	while (i < data->number_of_philosophers)
 		pthread_mutex_init(&data->forks[i++], NULL);
 	pthread_mutex_init(&data->pulse_check, NULL);
 }
