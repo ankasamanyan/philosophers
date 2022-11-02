@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/01 20:08:17 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/02 03:10:24 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ void		set_the_table(t_data *data, int argc, char **argv);
 long long	timer(void);
 /* halp functions */
 int			ft_atoi(char *stringy);
-void		*ft_calloc(size_t count, size_t size);
 int			code_blue(t_philo *philo);
+void		*ft_calloc(size_t count, size_t size);
 /* thread manipulations */
 void		invite_the_philosophers(t_data *data);
 void		get_rid_of_the_bodies(t_data *data);
 int			put_down_forks(t_philo *philo);
-
 /* routine */
+void		*halp(void *ptr);
 int			time_to_eat(t_philo	*philo);
 int			time_to_sleep(t_philo *philo);
 int			time_to_think(t_philo *philo);
