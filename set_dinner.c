@@ -6,45 +6,48 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 15:39:55 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:10:45 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	input_check(int argc, char **argv)
+int	input_check(int argc, char **argv)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	if (argc < 5 || argc > 6)
 	{
 		write(2, "\033[44mWrong number of arguments!\033[0m\n", 36);
-		exit(0);
+		return (0);
 	}
 	while (argv[i])
 	{
 		j = 0;
-		while (argv[i][j] &&
-			(ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < 0))
+		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j]))
 			{
-				write(2, "\033[44mInvalid input!\033[0m\n", 36);
-				exit(0);
+				write(2, "\033[44mInvalid input!\033[0m\n", 25);
+				return (0);
 			}
 			j++;
 		}
+		if (ft_strncmp("2147483647", argv[i], 11) < 0
+			&& ft_strlen(argv[i]) >= 10)
+		{
+			write(2, "\033[44mInvalid input!\033[0m\n", 25);
+			return (0);
+		}
 		i++;
 	}
+	return (1);
 }
-	//check if it's a number?
 
 int	no_one_showed_up(t_philo *philo)
 {
-	
-	// pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
 	if (philo->data->number_of_philosophers == 1)
 	{
 		pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
@@ -97,4 +100,22 @@ void	invite_the_philosophers(t_data *data)
 	while (i < data->number_of_philosophers)
 		pthread_mutex_init(&data->forks[i++], NULL);
 	pthread_mutex_init(&data->pulse_check, NULL);
+}
+
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
+{
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
+
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }

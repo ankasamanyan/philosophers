@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 14:42:09 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:02:19 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_philo
 }				t_philo;
 
 /* input check */
-void		input_check(int argc, char **argv);
+int		input_check(int argc, char **argv);
 /* initializing values */
 int			no_one_showed_up(t_philo *philo);
 void		set_the_table(t_data *data, int argc, char **argv);
@@ -73,6 +73,9 @@ int			ft_atoi(char *stringy);
 void		check_the_pulse(t_data *data);
 int			ft_isdigit(int c);
 void		*ft_calloc(size_t count, size_t size);
+int			ft_strncmp(const char *str1, const char *str2, size_t n);
+size_t		ft_strlen(const char *str);
+
 /* thread manipulations */
 void		invite_the_philosophers(t_data *data);
 void		get_rid_of_the_bodies(t_data *data);
