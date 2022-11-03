@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 15:50:50 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:31:19 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*halp(void *ptr)
 	if (no_one_showed_up(philo))
 		return (NULL);
 	if (philo->id % 2)
-		usleep(philo->data->time_to_eat);
+		usleep(10000);
 	while (LIFE_IS_MEANUNGLESS_AND_WE_ALL_GONNA_DIE)
 	{
 		if (time_to_eat(philo))

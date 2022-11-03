@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:29:24 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 15:56:15 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:27:36 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,17 @@ int	time_to_sleep(t_philo *philo)
 
 	time = timer();	
 	if (philo->data->code_blue)
+	{
+		// printf("halp %i\n", philo->id);
 		return (put_down_forks(philo));
+	}
 	printf("%s%lld Philosopher %i is sleeping%s\n", GREEN,
 		timer() - philo->data->start_time, philo->id, RESET);
 	while (time + (philo->data->time_to_sleep) > timer()  && !philo->data->code_blue)
 		usleep(100);
+	// {
+		// printf("halp\n");
+	// }
 	return (0);
 }
 
