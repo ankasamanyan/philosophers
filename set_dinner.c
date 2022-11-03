@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 17:10:45 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:35:50 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,15 @@ int	input_check(int argc, char **argv)
 			}
 			j++;
 		}
-		if (ft_strncmp("2147483647", argv[i], 11) < 0
-			&& ft_strlen(argv[i]) >= 10)
+		if (ft_strlen(argv[i]) > 10)
+		{
+			write(2, "\033[44mInvalid input!\033[0m\n", 25);
+			return (0);
+		}
+		if (ft_strlen(argv[i]) > 10)
+			return (0);
+		if ((ft_strncmp("2147483647", argv[i], 11) < 0
+			&& ft_strlen(argv[i]) == 10))
 		{
 			write(2, "\033[44mInvalid input!\033[0m\n", 25);
 			return (0);

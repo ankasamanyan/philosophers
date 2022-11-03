@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:29:24 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 17:19:36 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:57:27 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	time_to_eat(t_philo	*philo)
 		return (put_down_forks(philo));
 	printf("%s%lld Philosopher %i has taken a fork%s\n", PURPLE,
 		timer() - philo->data->start_time, philo->id, RESET);
-	philo->last_meal = timer();
 	if (philo->data->code_blue)
 		return (put_down_forks(philo));
 	time = timer();
+	philo->last_meal = timer();
 	printf("%s%lld Philosopher %i is eating%s\n", PINK,
 		timer() - philo->data->start_time, philo->id, RESET);
 	while (time + (philo->data->time_to_eat) > timer() && !philo->data->code_blue)
@@ -45,7 +45,7 @@ int	time_to_eat(t_philo	*philo)
 
 int	put_down_forks(t_philo *philo)
 {
-	// printf("%llddropping forks %i\n", timer() - philo->data->start_time, philo->id);
+	// printf("%llddropping forks  %i\n", timer() - philo->data->start_time, philo->id);
 	pthread_mutex_unlock(&philo->data->forks[philo->left_fork]);
 	pthread_mutex_unlock(&philo->data->forks[philo->right_fork]);
 	return (1);
@@ -88,6 +88,7 @@ void	check_the_pulse(t_data *data)
 
 	while (LIFE_IS_MEANUNGLESS_AND_WE_ALL_GONNA_DIE)
 	{
+		usleep(500);
 		i = 0;
 		while (i < data->number_of_philosophers)
 		{

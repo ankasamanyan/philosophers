@@ -6,7 +6,7 @@
 #    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/11/03 14:21:07 by akasaman         ###   ########.fr        #
+#    Updated: 2022/11/03 19:47:30 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = philo.c halp.c routine.c set_dinner.c
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=thread
+FLAGS = -Wall -Wextra -Werror -pthread 
 RM = rm -rf
 
 PINK	:= \033[0;35m
