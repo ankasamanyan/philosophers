@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   halp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:57 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 05:30:09 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/03 15:43:16 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	get_rid_of_the_bodies(t_data *data)
 	i = 0;
 	while (i < data->number_of_philosophers)
 		pthread_join(data->philo[i++].thred, NULL);
+	// printf("joined all\n");
 	i = 0;
 	while (i < data->number_of_philosophers)
 		pthread_mutex_destroy(&data->forks[i++]);

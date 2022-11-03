@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+         #
+#    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/11/02 20:00:20 by ankasamanya      ###   ########.fr        #
+#    Updated: 2022/11/03 14:21:07 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ all: $(NAME)
 	@echo "\033[0;35m••••\033[0m\c"
 
 $(NAME): $(OBJ) $(SRC)
-		@$(CC) $(OBJ) -o $(NAME) -fsanitize=address -g -O3
+		@$(CC) $(OBJ) -o $(NAME) 
+#		-fsanitize=address -g -O3
 #		@$(CC) $(OBJ) -o $(NAME) 
 	@echo "\n\033[0;35m✨Philosophers successfully compiled!✨"
 	@echo "	"

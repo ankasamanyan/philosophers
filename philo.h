@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 23:01:14 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/03 14:42:09 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		set_the_table(t_data *data, int argc, char **argv);
 /* halp functions */
 long long	timer(void);
 int			ft_atoi(char *stringy);
-void		code_blue(t_data *data);
+void		check_the_pulse(t_data *data);
 int			ft_isdigit(int c);
 void		*ft_calloc(size_t count, size_t size);
 /* thread manipulations */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 20:08:55 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/03 15:50:50 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*halp(void *ptr)
 {
 	t_philo	*philo;
+
 	philo = (t_philo *)ptr;
-	// pthread_mutex_lock(&)
 	if (no_one_showed_up(philo))
 		return (NULL);
 	if (philo->id % 2)
@@ -40,8 +40,7 @@ int	main(int argc, char *argv[])
 	input_check(argc, argv);
 	set_the_table(&data, argc, argv);
 	invite_the_philosophers(&data);
-	code_blue(&data);
+	check_the_pulse(&data);
 	get_rid_of_the_bodies(&data);
-	// printf("halp\n");
 	return (0);
 }

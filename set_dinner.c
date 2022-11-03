@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_dinner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
+/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 19:39:21 by ankasamanya      ###   ########.fr       */
+/*   Updated: 2022/11/03 15:39:55 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	no_one_showed_up(t_philo *philo)
 		printf("%s%lld Philosopher %i has taken a fork%s\n", YELLOW,
 			timer() - philo->data->start_time, philo->id, RESET);
 		usleep(philo->data->time_to_die);
-		printf("%s%lld Philosopher %i died. RIP%s\n", ON_PINK,
-			timer() - philo->data->start_time, philo->id, RESET);
 		put_down_forks(philo);
 		return (1);
 	}
@@ -64,9 +62,9 @@ void	set_the_table(t_data *data, int argc, char **argv)
 	data->start_time = timer();
 	data->code_blue = 0;
 	data->number_of_philosophers = ft_atoi(argv[1]);
-	data->time_to_die = ft_atoi(argv[2]) * 1000;
-	data->time_to_eat = ft_atoi(argv[3]) * 1000;
-	data->time_to_sleep = ft_atoi(argv[4]) * 1000;
+	data->time_to_die = ft_atoi(argv[2]);
+	data->time_to_eat = ft_atoi(argv[3]);
+	data->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		data->times_philo_must_eat = ft_atoi(argv[5]);
 	else
@@ -86,10 +84,10 @@ void	invite_the_philosophers(t_data *data)
 		data->philo[i].data = data;
 		data->philo[i].meals = 0;
 		data->philo[i].id = i + 1;
-		data->philo[i].left_fork = data->philo[i].id;
 		data->philo[i].last_meal = data->start_time;
-		if (i != data->number_of_philosophers)
-			data->philo[i].right_fork = data->philo[i].id + 1;
+		data->philo[i].left_fork = i;
+		if (i != (data->number_of_philosophers - 1))
+			data->philo[i].right_fork = i + 1;
 		else
 			data->philo[i].right_fork = 0;
 		pthread_create(&data->philo[i].thred, NULL, &halp, &data->philo[i]);
