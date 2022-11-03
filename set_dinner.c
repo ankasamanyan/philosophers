@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_dinner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 17:00:23 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/02 19:39:21 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	invite_the_philosophers(t_data *data)
 		pthread_create(&data->philo[i].thred, NULL, &halp, &data->philo[i]);
 		i++;
 	}
-	printf("HELLO I AM PARENT\n");
 	i = 0;
 	while (i < data->number_of_philosophers)
 		pthread_mutex_init(&data->forks[i++], NULL);

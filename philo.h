@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 15:45:35 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:01:14 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		set_the_table(t_data *data, int argc, char **argv);
 /* halp functions */
 long long	timer(void);
 int			ft_atoi(char *stringy);
-int			code_blue(t_philo *philo);
+void		code_blue(t_data *data);
 int			ft_isdigit(int c);
 void		*ft_calloc(size_t count, size_t size);
 /* thread manipulations */

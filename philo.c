@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankasamanyan <ankasamanyan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/02 17:09:12 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/02 20:08:55 by ankasamanya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ int	main(int argc, char *argv[])
 	input_check(argc, argv);
 	set_the_table(&data, argc, argv);
 	invite_the_philosophers(&data);
-	// while(!code_blue)
-	// {
-	// 	check_on_children_to_find_out_who_doesnt_deserve_to_live_anymore();
-	// }
+	code_blue(&data);
 	get_rid_of_the_bodies(&data);
 	// printf("halp\n");
 	return (0);
