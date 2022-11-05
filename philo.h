@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 17:02:19 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/05 15:43:00 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ typedef struct s_philo
 {
 	pthread_t			thred;
 	int					id;
-	int					left_fork;
-	int					right_fork;
+	pthread_mutex_t		*left_fork;
+	pthread_mutex_t		*right_fork;
 	int					meals;
 	long long			last_meal;
 	t_data				*data;

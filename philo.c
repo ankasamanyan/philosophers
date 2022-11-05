@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 19:55:45 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:41:44 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 {
 	t_data	data;
 
-	if (!input_check(argc, argv))
+	if (input_check(argc, argv))
 		return (0);
 	set_the_table(&data, argc, argv);
 	invite_the_philosophers(&data);
