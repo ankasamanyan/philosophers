@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/05 16:41:44 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/05 19:07:57 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ void	*halp(void *ptr)
 			break ;
 	}
 	return (NULL);
+}
+
+void	get_rid_of_the_bodies(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number_of_philosophers)
+		pthread_join(data->philo[i++].thred, NULL);
+	i = 0;
+	while (i < data->number_of_philosophers)
+		pthread_mutex_destroy(&data->forks[i++]);
+	pthread_mutex_destroy(&data->pulse_check);
+	free(data->philo);
+	free(data->forks);
 }
 
 int	main(int argc, char *argv[])

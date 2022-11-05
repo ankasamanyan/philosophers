@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:54:31 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/05 15:43:00 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/05 19:12:30 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_philo
 }				t_philo;
 
 /* input check */
-int		input_check(int argc, char **argv);
+int			input_check(int argc, char **argv);
 /* initializing values */
 int			no_one_showed_up(t_philo *philo);
 void		set_the_table(t_data *data, int argc, char **argv);

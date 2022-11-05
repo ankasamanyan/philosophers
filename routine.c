@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:29:24 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/05 16:43:02 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/05 19:14:58 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 int	time_to_eat(t_philo	*philo)
 {
-	long long	time;
-
 	pthread_mutex_lock(philo->left_fork);
 	if (philo->data->code_blue)
 		return (put_down_forks(philo));
 	printf("%s%lld Philosopher %i has taken a fork%s\n", YELLOW,
 		timer() - philo->data->start_time, philo->id, RESET);
 	if (philo->data->code_blue)
-	{
-		// printf("code blue exit\n");
 		return (put_down_forks(philo));
-	}
 	pthread_mutex_lock(philo->right_fork);
 	if (philo->data->code_blue)
 		return (put_down_forks(philo));
@@ -33,12 +28,11 @@ int	time_to_eat(t_philo	*philo)
 		timer() - philo->data->start_time, philo->id, RESET);
 	if (philo->data->code_blue)
 		return (put_down_forks(philo));
-	time = timer();
 	philo->last_meal = timer();
-	// printf("update last meal timer %i %lld\n", philo->id, philo->last_meal - philo->data->start_time);
 	printf("%s%lld Philosopher %i is eating%s\n", PINK,
 		timer() - philo->data->start_time, philo->id, RESET);
-	while (time + (philo->data->time_to_eat ) > timer() && !philo->data->code_blue)
+	while (philo->last_meal + philo->data->time_to_eat > timer()
+		&& !philo->data->code_blue)
 		usleep(100);
 	philo->meals++;
 	put_down_forks(philo);
@@ -49,7 +43,6 @@ int	time_to_eat(t_philo	*philo)
 
 int	put_down_forks(t_philo *philo)
 {
-	// printf("%lld dropping forks  %i\n", timer() - philo->data->start_time, philo->id);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	return (1);
@@ -59,19 +52,14 @@ int	time_to_sleep(t_philo *philo)
 {
 	long long	time;
 
-	time = timer();	
+	time = timer();
 	if (philo->data->code_blue)
-	{
-		// printf("halp %i\n", philo->id);
 		return (put_down_forks(philo));
-	}
 	printf("%s%lld Philosopher %i is sleeping%s\n", GREEN,
 		timer() - philo->data->start_time, philo->id, RESET);
-	while (time + (philo->data->time_to_sleep) > timer()  && !philo->data->code_blue)
+	while (time + philo->data->time_to_sleep > timer()
+		&& !philo->data->code_blue)
 		usleep(100);
-	// {
-		// printf("halp\n");
-	// }
 	return (0);
 }
 
@@ -92,8 +80,8 @@ void	check_the_pulse(t_data *data)
 
 	while (LIFE_IS_MEANUNGLESS_AND_WE_ALL_GONNA_DIE)
 	{
-		i = 0;
-		while (i < data->number_of_philosophers)
+		i = -1;
+		while (++i < data->number_of_philosophers)
 		{
 			pthread_mutex_lock(&data->pulse_check);
 			if (data->philo[i].meals == data->times_philo_must_eat)
@@ -110,8 +98,7 @@ void	check_the_pulse(t_data *data)
 				return ;
 			}
 			pthread_mutex_unlock(&data->pulse_check);
-			i++;
 		}
-		usleep(1000);
+		usleep(500);
 	}
 }

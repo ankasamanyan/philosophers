@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:42:30 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/05 16:41:39 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/05 19:28:19 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,25 @@ int	input_check(int argc, char **argv)
 
 	i = 1;
 	if (argc < 5 || argc > 6)
-	{
-		write(2, "\033[44mWrong number of arguments!\033[0m\n", 36);
-		return (0);
-	}
-	
+		return (write(2, "\033[44mWrong number of arguments!\033[0m\n", 36));
 	while (argv[i])
 	{
-		if (ft_atoi(argv[1]) == 0 || ft_atoi(argv[2]) == 0 
+		if (ft_atoi(argv[1]) == 0 || ft_atoi(argv[2]) == 0
 			|| ft_atoi(argv[3]) == 0 || ft_atoi(argv[4]) == 0)
-			return(write(2, "\033[44mInvalid input!\033[0m\n", 25));
-		if (argc == 6 && ft_atoi(argv[5]) == 0)
-			return(write(2, "\033[44mStahp being so mean! Let them eat!\033[0m\n", 45));
-			
+			return (write(2, "\033[44mInvalid input!\033[0m\n", 25));
 		j = 0;
 		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return(write(2, "\033[44mInvalid input!\033[0m\n", 25));
-			j++;
-		}
-		if (ft_strlen(argv[i]) > 10)
-			return(write(2, "\033[44mInvalid input!\033[0m\n", 25));
-		if (ft_strlen(argv[i]) > 10)
-			return (420);
-		if ((ft_strncmp("2147483647", argv[i], 11) < 0
-			&& ft_strlen(argv[i]) == 10))
-			return(write(2, "\033[44mInvalid input!\033[0m\n", 25));
+			if (!ft_isdigit(argv[i][j++]))
+				return (write(2, "\033[44mInvalid input!\033[0m\n", 25));
+		if (ft_strlen(argv[i]) > 10
+			|| (ft_strncmp("2147483647", argv[i], 11) < 0
+				&& ft_strlen(argv[i]) == 10))
+			return (write(2, "\033[44mInvalid input!\033[0m\n", 25));
 		i++;
 	}
-	return (0);
-}
-
-int	no_one_showed_up(t_philo *philo)
-{
-	if (philo->data->number_of_philosophers == 1)
-	{
-		pthread_mutex_lock(philo->left_fork);
-		printf("%s%lld Philosopher %i has taken a fork%s\n", YELLOW,
-			timer() - philo->data->start_time, philo->id, RESET);
-		usleep(philo->data->time_to_die);
-		put_down_forks(philo);
-		return (1);
-	}
+	if (argc == 6 && ft_atoi(argv[5]) == 0)
+		return (write(2,
+				"\033[44mStahp being so mean! Let them eat!\033[0m\n", 45));
 	return (0);
 }
 
@@ -107,20 +83,26 @@ void	invite_the_philosophers(t_data *data)
 	pthread_mutex_init(&data->pulse_check, NULL);
 }
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+int	no_one_showed_up(t_philo *philo)
 {
-	size_t			i;
-	unsigned char	*s1;
-	unsigned char	*s2;
-
-	i = 0;
-	s1 = (unsigned char *)str1;
-	s2 = (unsigned char *)str2;
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	if (philo->data->number_of_philosophers == 1)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		pthread_mutex_lock(philo->left_fork);
+		printf("%s%lld Philosopher %i has taken a fork%s\n", YELLOW,
+			timer() - philo->data->start_time, philo->id, RESET);
+		usleep(philo->data->time_to_die);
+		put_down_forks(philo);
+		return (1);
 	}
 	return (0);
+}
+
+long long	timer(void)
+{
+	struct timeval	time;
+	int				time_thingy;
+
+	gettimeofday(&time, NULL);
+	time_thingy = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+	return (time_thingy);
 }

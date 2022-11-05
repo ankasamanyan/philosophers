@@ -5,37 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 22:25:57 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/03 16:58:13 by akasaman         ###   ########.fr       */
+/*   Created: 2022/11/05 19:06:00 by akasaman          #+#    #+#             */
+/*   Updated: 2022/11/05 19:11:08 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-long long	timer(void)
-{
-	struct timeval	time;
-	int				time_thingy;
-
-	gettimeofday(&time, NULL);
-	time_thingy = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-	return (time_thingy);
-}
-
-void	get_rid_of_the_bodies(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->number_of_philosophers)
-		pthread_join(data->philo[i++].thred, NULL);
-	i = 0;
-	while (i < data->number_of_philosophers)
-		pthread_mutex_destroy(&data->forks[i++]);
-	pthread_mutex_destroy(&data->pulse_check);
-	free(data->philo);
-	free(data->forks);
-}
 
 int	ft_atoi(char *stringy)
 {
@@ -82,4 +57,22 @@ size_t	ft_strlen(const char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
+{
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
+
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }
