@@ -6,7 +6,7 @@
 #    By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 08:40:39 by ankasamanya       #+#    #+#              #
-#    Updated: 2022/11/05 19:09:17 by akasaman         ###   ########.fr        #
+#    Updated: 2022/11/07 14:16:40 by akasaman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = philo.c halp.c routine.c set_dinner.c
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -pthread
+FLAGS = -Wall -Wextra -Werror -pthread 
 RM = rm -rf
 
 PINK	:= \033[0;35m
@@ -32,9 +32,7 @@ all: $(NAME)
 	@echo "\033[0;35m••••\033[0m\c"
 
 $(NAME): $(OBJ) $(SRC)
-		@$(CC) $(OBJ) -o $(NAME) 
-#		@$(CC) $(OBJ) -o $(NAME) -g -fsanitize=thread
-#		@$(CC) $(OBJ) -o $(NAME) 
+		@$(CC) $(OBJ) -o $(NAME)
 	@echo "\n\033[0;35m✨Philosophers successfully compiled!✨"
 	@echo "	"
 	@echo "${RESET}  (\      	    ${RESET},..........   ..........,${PURPLE} "

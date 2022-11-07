@@ -6,7 +6,7 @@
 /*   By: akasaman <akasaman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:25:36 by ankasamanya       #+#    #+#             */
-/*   Updated: 2022/11/05 19:07:57 by akasaman         ###   ########.fr       */
+/*   Updated: 2022/11/07 14:19:35 by akasaman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	get_rid_of_the_bodies(t_data *data)
 int	main(int argc, char *argv[])
 {
 	t_data	data;
-
+	
 	if (input_check(argc, argv))
 		return (0);
 	set_the_table(&data, argc, argv);
